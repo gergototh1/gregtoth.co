@@ -1,9 +1,9 @@
-# vscode-portfolio
-[![Open is Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/itsnitinr/vscode-portfolio)
+# cursor-portfolio
+[![Built with Cursor](https://img.shields.io/badge/Built%20with-Cursor%20AI-00D4AA?style=flat&logo=cursor)](https://cursor.sh/)
 
-A Visual Studio Code themed developer portfolio website built with Next.js and deployed on Vercel.
+A Cursor AI editor themed developer portfolio website built with Next.js and deployed on Vercel.
 
-![vscode-portfolio banner](https://imgur.com/JXJ9mpO.gif)
+![cursor-portfolio banner](https://imgur.com/JXJ9mpO.gif)
 
 ## Features Roadmap
 
@@ -31,7 +31,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-All VSCode related components can be found in the `components` folder. To change the content of the portfolio, check out the `pages` folder. To add or remove pages, modify `components/Sidebar.jsx` and `components/Tabsbar.jsx`.
+All Cursor related components can be found in the `components` folder. To change the content of the portfolio, check out the `pages` folder. To add or remove pages, modify `components/Sidebar.jsx` and `components/Tabsbar.jsx`.
 
 ## Next.js Resources
 

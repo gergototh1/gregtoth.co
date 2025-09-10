@@ -11,7 +11,7 @@ export const projects: Project[] = [
     title: 'Crypto Video Report',
     description:
       'AI-powered cryptocurrency market analysis and video reporting platform.',
-    logo: '/logos/vsc.svg',
+    logo: '/logos/cursor_icon.svg',
     link: 'https://cryptovideoreport.com',
     slug: 'crypto-video-report',
   },
@@ -19,7 +19,7 @@ export const projects: Project[] = [
     title: 'Invoice Email Parser',
     description:
       'Automated invoice extraction and processing from email attachments using AI.',
-    logo: '/logos/vsc.svg',
+    logo: '/logos/cursor_icon.svg',
     link: 'https://invoiceemailparser.com',
     slug: 'invoice-email-parser',
   },

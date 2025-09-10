@@ -8,6 +8,7 @@ const CustomHead = ({ title }: CustomHeadProps) => {
   return (
     <Head>
       <title>{title}</title>
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       <meta
         name="description"
         content="Greg Toth is an indie hacker and AI fanatic building products that solve real problems. Portfolio built with Cursor AI editor theme."
@@ -22,7 +23,7 @@ const CustomHead = ({ title }: CustomHeadProps) => {
         content="An indie hacker and AI fanatic building products that solve real problems. Portfolio built with Cursor AI editor theme."
       />
       <meta property="og:image" content="https://imgur.com/4zi5KkQ.png" />
-      <meta property="og:url" content="https://vscode-portfolio.vercel.app" />
+      <meta property="og:url" content="https://cursor-portfolio.vercel.app" />
       <meta name="twitter:card" content="summary_large_image" />
     </Head>
   );
