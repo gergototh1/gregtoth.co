@@ -128,41 +128,94 @@
 
   .tableContainer {
     margin: 1.5rem 0;
-    overflow-x: auto;
     border-radius: 4px;
     padding: 0;
   }
 
   .projectsTable {
-    min-width: 800px;
-    font-size: 13px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
   }
 
-  .tableHeader {
-    padding: 8px 12px;
-    font-size: 11px;
+  .projectsTable thead {
+    display: none;
+  }
+
+  .tableRow {
+    display: block;
+    background: var(--explorer-bg);
+    border: 1px solid var(--explorer-border);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    padding: 16px;
+  }
+
+  .tableRow:last-child {
+    margin-bottom: 0;
   }
 
   .projectCell,
   .descriptionCell,
   .statusCell,
   .linkCell {
-    padding: 8px 12px;
+    display: block;
+    padding: 8px 0;
+    border: none;
   }
 
-  .statusBadge {
-    font-size: 10px;
-    padding: 3px 6px;
+  .projectCell {
+    padding-top: 0;
+  }
+
+  .projectInfo {
+    justify-content: flex-start;
+  }
+
+  .projectName {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .description {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  .statusCell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .statusCell::before {
+    content: "Status:";
+    font-size: 12px;
+    color: var(--text-color);
+    opacity: 0.7;
+    font-weight: 500;
+  }
+
+  .linkCell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .linkCell::before {
+    content: "Link:";
+    font-size: 12px;
+    color: var(--text-color);
+    opacity: 0.7;
+    font-weight: 500;
   }
 
   .projectLink {
-    font-size: 11px;
+    font-size: 13px;
     word-break: break-all;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px;
-    display: inline-block;
+    white-space: normal;
+    max-width: none;
+    display: inline;
   }
 
   .pageTitle {
