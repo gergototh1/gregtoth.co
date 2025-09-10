@@ -15,8 +15,8 @@ export default function HomePage() {
     },
     { code: '  const developerInfo = {', type: 'variable' },
     { code: "    name: 'Greg Toth',", type: 'array-item' },
-    { code: "    role: 'Indie Hacker & AI Fanatic',", type: 'array-item' },
-    { code: "    bio: 'Building products that matter'", type: 'array-item' },
+    { code: "    role: 'Business guy turned vibe coder',", type: 'array-item' },
+    { code: "    bio: 'I turn ideas into software — solo.'", type: 'array-item' },
     { code: '  };', type: 'array-end' },
     { code: '', type: 'blank' },
     { code: '  useEffect(() => {', type: 'nested-function' },
@@ -94,12 +94,11 @@ export default function HomePage() {
             Greg <span className={styles.accentText}>Toth</span>
           </h1>
 
-          <div className={styles.developerRole}>Indie Hacker & AI Fanatic</div>
+          <div className={styles.developerRole}>Business guy turned vibe coder</div>
 
           <p className={styles.bio}>
-            I&apos;m an indie hacker building products that solve real problems. 
-            From idea to launch, I create full-stack applications that users love. 
-            Currently exploring the intersection of AI and productivity tools.
+            I turn ideas into software — solo.
+            With 10+ years in business development & marketing and the power of AI + vibe coding, I build products fast, without a dev team. Always exploring how AI can turn bold ideas into real solutions.
           </p>
 
           <div className={styles.actionLinks}>
