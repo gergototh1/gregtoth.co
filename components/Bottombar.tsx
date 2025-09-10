@@ -13,15 +13,10 @@ const Bottombar = () => {
   return (
     <footer className={styles.bottomBar}>
       <div className={styles.container}>
-        <a
-          href="https://github.com/itsnitinr/vscode-portfolio"
-          target="_blank"
-          rel="noreferrer noopener"
-          className={styles.section}
-        >
+        <div className={styles.section}>
           <VscSourceControl className={styles.icon} />
           <p>main</p>
-        </a>
+        </div>
         <div className={styles.section}>
           <VscError className={styles.icon} />
           <p className={styles.errorText}>0</p>&nbsp;&nbsp;
@@ -32,11 +27,11 @@ const Bottombar = () => {
       <div className={styles.container}>
         <div className={styles.section}>
           <SiNextdotjs className={styles.icon} />
-          <p>Powered by Next.js</p>
+          <p>Vibe Coding</p>
         </div>
         <div className={styles.section}>
           <VscCheck className={styles.icon} />
-          <p>Prettier</p>
+          <p>AI-Powered Development</p>
         </div>
         <div className={styles.section}>
           <VscBell />

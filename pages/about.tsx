@@ -20,16 +20,17 @@ const AboutPage = () => {
           </section>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Indie Hacking Journey</h2>
+            <h2 className={styles.sectionTitle}>From Business to Code</h2>
             <p className={styles.paragraph}>
-              I&apos;m currently building <span className={styles.highlight}>AI-powered productivity tools</span> 
-              that help individuals and small teams work more efficiently. My focus is on creating 
-              simple yet powerful solutions that leverage the latest AI capabilities.
+              I previously ran a <span className={styles.highlight}>software development agency</span> 
+              as a business person, not a developer. My background was in business development and marketing, 
+              but I always had ideas for complex software solutions.
             </p>
             <p className={styles.paragraph}>
-              From idea validation to product launch, I handle every aspect of the development process. 
-              I believe in shipping fast, iterating based on user feedback, and building products that 
-              people actually want to use.
+              <span className={styles.highlight}>AI and Vibe Coding</span> changed everything. 
+              Now I can combine my business experience with the ability to build complex software myself. 
+              I can take my ideas from concept to reality, leveraging my marketing and business development 
+              expertise alongside AI-powered development.
             </p>
           </section>
 
