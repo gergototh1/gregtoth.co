@@ -17,6 +17,7 @@ const ProjectsPage = () => {
             <tr>
               <th className={styles.tableHeader}>Project</th>
               <th className={styles.tableHeader}>Description</th>
+              <th className={styles.tableHeader}>Status</th>
               <th className={styles.tableHeader}>Link</th>
             </tr>
           </thead>
@@ -31,6 +32,9 @@ const ProjectsPage = () => {
                 </td>
                 <td className={styles.descriptionCell}>
                   <span className={styles.description}>{project.description}</span>
+                </td>
+                <td className={styles.statusCell}>
+                  <span className={styles.statusBadge}>In Development</span>
                 </td>
                 <td className={styles.linkCell}>
                   <a 
