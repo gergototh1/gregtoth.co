@@ -1,4 +1,3 @@
-import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/data/projects';
 
 import styles from '@/styles/ProjectsPage.module.css';
@@ -12,10 +11,41 @@ const ProjectsPage = () => {
         skills in web development, design, and problem-solving.
       </p>
 
-      <div className={styles.container}>
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+      <div className={styles.tableContainer}>
+        <table className={styles.projectsTable}>
+          <thead>
+            <tr>
+              <th className={styles.tableHeader}>Project</th>
+              <th className={styles.tableHeader}>Description</th>
+              <th className={styles.tableHeader}>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects.map((project) => (
+              <tr key={project.slug} className={styles.tableRow}>
+                <td className={styles.projectCell}>
+                  <div className={styles.projectInfo}>
+                    <span className={styles.projectIcon}>📁</span>
+                    <span className={styles.projectName}>{project.title}</span>
+                  </div>
+                </td>
+                <td className={styles.descriptionCell}>
+                  <span className={styles.description}>{project.description}</span>
+                </td>
+                <td className={styles.linkCell}>
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={styles.projectLink}
+                  >
+                    {project.link}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
