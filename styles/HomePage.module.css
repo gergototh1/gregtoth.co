@@ -23,7 +23,7 @@
 }
 
 .function {
-  color: #dcdcaa;
+  color: #e0e0e0;
 }
 
 .heroLayout {
@@ -68,7 +68,7 @@
   padding: 16px 0;
   width: 50px;
   background: var(--main-bg);
-  color: #636e83;
+  color: #e0e0e0;
   font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
   user-select: none;
@@ -138,16 +138,16 @@
 
 /* Syntax Highlighting */
 .function {
-  color: #c586c0;
+  color: #e0e0e0;
 }
 
 .variable {
-  color: #9cdcfe;
+  color: #e0e0e0;
 }
 
 .array-start,
 .array-end {
-  color: #dcdcaa;
+  color: #e0e0e0;
 }
 
 .array-item {
@@ -155,11 +155,11 @@
 }
 
 .nested-function {
-  color: #c586c0;
+  color: #e0e0e0;
 }
 
 .return {
-  color: #dcdcaa;
+  color: #e0e0e0;
 }
 
 .function-call {
@@ -172,11 +172,11 @@
 }
 
 .return-object {
-  color: #9cdcfe;
+  color: #e0e0e0;
 }
 
 .object-method {
-  color: #dcdcaa;
+  color: #e0e0e0;
 }
 
 .comment {
