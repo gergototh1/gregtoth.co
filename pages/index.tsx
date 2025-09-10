@@ -97,7 +97,7 @@ export default function HomePage() {
           <div className={styles.developerRole}>Indie Hacker & AI Fanatic</div>
 
           <p className={styles.bio}>
-            I'm an indie hacker building products that solve real problems. 
+            I&apos;m an indie hacker building products that solve real problems. 
             From idea to launch, I create full-stack applications that users love. 
             Currently exploring the intersection of AI and productivity tools.
           </p>
