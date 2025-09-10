@@ -122,8 +122,12 @@
 }
 
 @media screen and (max-width: 768px) {
+  .layout {
+    padding: 0 16px;
+  }
+
   .tableContainer {
-    margin: 1.5rem 16px;
+    margin: 1.5rem 0;
     overflow-x: auto;
     border-radius: 4px;
     padding: 0;
@@ -168,5 +172,6 @@
   .pageSubtitle {
     font-size: 1rem;
     margin-bottom: 2rem;
+    padding-right: 0;
   }
 }
