@@ -14,9 +14,9 @@ export default function HomePage() {
       type: 'variable',
     },
     { code: '  const developerInfo = {', type: 'variable' },
-    { code: "    name: 'Nitin Ranganath',", type: 'array-item' },
-    { code: "    role: 'Full Stack Developer',", type: 'array-item' },
-    { code: "    bio: 'Building modern web experiences'", type: 'array-item' },
+    { code: "    name: 'Greg Toth',", type: 'array-item' },
+    { code: "    role: 'Indie Hacker & AI Fanatic',", type: 'array-item' },
+    { code: "    bio: 'Building products that matter'", type: 'array-item' },
     { code: '  };', type: 'array-end' },
     { code: '', type: 'blank' },
     { code: '  useEffect(() => {', type: 'nested-function' },
@@ -91,14 +91,15 @@ export default function HomePage() {
 
         <div className={styles.infoSection}>
           <h1 className={styles.developerName}>
-            Nitin <span className={styles.accentText}>Ranganath</span>
+            Greg <span className={styles.accentText}>Toth</span>
           </h1>
 
-          <div className={styles.developerRole}>Full Stack Web Developer</div>
+          <div className={styles.developerRole}>Indie Hacker & AI Fanatic</div>
 
           <p className={styles.bio}>
-            I build elegant, responsive web applications with modern
-            technologies. Focused on clean code and intuitive user experiences.
+            I'm an indie hacker building products that solve real problems. 
+            From idea to launch, I create full-stack applications that users love. 
+            Currently exploring the intersection of AI and productivity tools.
           </p>
 
           <div className={styles.actionLinks}>
