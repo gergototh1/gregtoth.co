@@ -34,7 +34,7 @@ const ProjectsPage = () => {
                   <span className={styles.description}>{project.description}</span>
                 </td>
                 <td className={styles.statusCell}>
-                  <span className={styles.statusBadge}>In Development</span>
+                  <span className={styles.statusBadge}>Dev</span>
                 </td>
                 <td className={styles.linkCell}>
                   <a 

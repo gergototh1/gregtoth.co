@@ -125,18 +125,34 @@
   .tableContainer {
     margin: 1.5rem 0;
     overflow-x: auto;
+    border-radius: 4px;
   }
 
   .projectsTable {
-    min-width: 600px;
+    min-width: 500px;
+    font-size: 13px;
   }
 
-  .tableHeader,
+  .tableHeader {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
   .projectCell,
   .descriptionCell,
   .statusCell,
   .linkCell {
-    padding: 10px 12px;
+    padding: 8px 10px;
+  }
+
+  .statusBadge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .projectLink {
+    font-size: 11px;
+    word-break: break-all;
   }
 
   .pageTitle {
