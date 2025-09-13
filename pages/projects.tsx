@@ -11,45 +11,23 @@ const ProjectsPage = () => {
         skills in web development, design, and problem-solving.
       </p>
 
-      <div className={styles.tableContainer}>
-        <table className={styles.projectsTable}>
-          <thead>
-            <tr>
-              <th className={styles.tableHeader}>Project</th>
-              <th className={styles.tableHeader}>Description</th>
-              <th className={styles.tableHeader}>Status</th>
-              <th className={styles.tableHeader}>Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projects.map((project) => (
-              <tr key={project.slug} className={styles.tableRow}>
-                <td className={styles.projectCell}>
-                  <div className={styles.projectInfo}>
-                    <span className={styles.projectIcon}>📁</span>
-                    <span className={styles.projectName}>{project.title}</span>
-                  </div>
-                </td>
-                <td className={styles.descriptionCell}>
-                  <span className={styles.description}>{project.description}</span>
-                </td>
-                <td className={styles.statusCell}>
-                  <span className={styles.statusBadge}>Dev</span>
-                </td>
-                <td className={styles.linkCell}>
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={styles.projectLink}
-                  >
-                    {project.link}
-                  </a>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className={styles.container}>
+        {projects.map((project) => (
+          <div key={project.slug} className={styles.projectCard}>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+            <div className={styles.projectMeta}>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.projectLink}
+              >
+                View Project →
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

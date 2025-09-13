@@ -49,6 +49,57 @@
   background-size: 100% 88%;
 }
 
+.articleCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.articleCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.articleCard h2 {
+  color: var(--accent-color);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.articleCard p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 900px) {
   .container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

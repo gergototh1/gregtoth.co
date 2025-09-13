@@ -9,12 +9,35 @@ export interface Article {
   comments_count: number;
 }
 
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  author: string;
+  tags: string[];
+  content: string;
+}
+
 export interface Project {
   title: string;
   description: string;
   logo: string;
   link: string;
   slug: string;
+}
+
+export interface ProjectPost {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  status: string;
+  tags: string[];
+  link?: string;
+  github?: string;
+  image?: string;
+  content: string;
 }
 
 export interface Repo {

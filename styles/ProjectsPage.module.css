@@ -5,6 +5,66 @@
   height: 100%;
 }
 
+.container {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.projectCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.projectCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.projectCard h2 {
+  color: var(--accent-color);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.projectCard p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.projectMeta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.projectLink {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.projectLink:hover {
+  opacity: 0.8;
+}
+
 .tableContainer {
   margin: 2rem 0;
   background: var(--explorer-bg);
