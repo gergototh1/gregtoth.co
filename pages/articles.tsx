@@ -1,5 +1,3 @@
-import ArticleCard from '@/components/ArticleCard';
-
 import { BlogPost } from '@/types';
 import { getAllPosts } from '@/lib/mdx';
 
