@@ -9,7 +9,7 @@
 .content {
   padding: 2rem;
   color: var(--text-color);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
   flex: 1;
   height: 85vh;
   overflow-y: auto;

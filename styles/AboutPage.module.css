@@ -4,6 +4,7 @@
   margin: 0 auto;
   padding: 3rem 1.5rem;
   color: var(--text-color);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
 
 .content {
