@@ -5,7 +5,7 @@ import { AnimatedBackground } from '@/components/ui/animated-background'
 import Link from 'next/link'
 import {
   PROJECTS,
-  getBlogPosts,
+  BLOG_POSTS,
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
@@ -64,8 +64,6 @@ function MagneticSocialLink({
 }
 
 export default function Home() {
-  const BLOG_POSTS = getBlogPosts()
-
   return (
     <motion.main
       className="space-y-24"
