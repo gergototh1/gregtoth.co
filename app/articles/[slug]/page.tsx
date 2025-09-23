@@ -86,8 +86,9 @@ const getNextPost = (currentSlug: string) => {
   return currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug)
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
 
   if (!post) {
     notFound()
@@ -175,9 +176,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800"
       >
         <div className="flex justify-between items-center">
-          {getPreviousPost(params.slug) ? (
+          {getPreviousPost(slug) ? (
             <Link
-              href={`/articles/${getPreviousPost(params.slug)?.slug}`}
+              href={`/articles/${getPreviousPost(slug)?.slug}`}
               className="group flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
             >
               <svg
@@ -190,21 +191,21 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               </svg>
               <div className="text-left">
                 <div className="text-xs text-zinc-500 dark:text-zinc-500">Previous</div>
-                <div className="font-medium">{getPreviousPost(params.slug)?.title}</div>
+                <div className="font-medium">{getPreviousPost(slug)?.title}</div>
               </div>
             </Link>
           ) : (
             <div />
           )}
 
-          {getNextPost(params.slug) ? (
+          {getNextPost(slug) ? (
             <Link
-              href={`/articles/${getNextPost(params.slug)?.slug}`}
+              href={`/articles/${getNextPost(slug)?.slug}`}
               className="group flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors text-right"
             >
               <div className="text-right">
                 <div className="text-xs text-zinc-500 dark:text-zinc-500">Next</div>
-                <div className="font-medium">{getNextPost(params.slug)?.title}</div>
+                <div className="font-medium">{getNextPost(slug)?.title}</div>
               </div>
               <svg
                 className="w-4 h-4 transition-transform group-hover:translate-x-1"
