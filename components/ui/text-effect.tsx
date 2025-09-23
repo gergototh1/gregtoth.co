@@ -7,7 +7,7 @@ import {
   Transition,
   Variant,
   Variants,
-} from 'motion/react'
+} from 'framer-motion'
 import React from 'react'
 
 export type PresetType = 'blur' | 'fade-in-blur' | 'scale' | 'fade' | 'slide'
@@ -177,7 +177,7 @@ const createVariantsWithTransition = (
 ): Variants => {
   if (!transition) return baseVariants
 
-  const { exit: _, ...mainTransition } = transition
+  const { ...mainTransition } = transition
 
   return {
     ...baseVariants,

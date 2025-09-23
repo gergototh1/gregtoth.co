@@ -24,7 +24,7 @@ const TRANSITION_SECTION = {
 }
 
 export default function Articles() {
-  const [posts, setPosts] = useState<any[]>([])
+  const [posts, setPosts] = useState<{slug: string; title: string; date: string; excerpt: string}[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

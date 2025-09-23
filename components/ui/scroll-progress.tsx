@@ -1,8 +1,14 @@
 'use client'
 
-import { motion, SpringOptions, useScroll, useSpring } from 'motion/react'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { RefObject } from 'react'
+
+type SpringOptions = {
+  stiffness?: number
+  damping?: number
+  restDelta?: number
+}
 
 export type ScrollProgressProps = {
   className?: string
@@ -10,7 +16,7 @@ export type ScrollProgressProps = {
   containerRef?: RefObject<HTMLDivElement>
 }
 
-const DEFAULT_SPRING_OPTIONS: SpringOptions = {
+const DEFAULT_SPRING_OPTIONS = {
   stiffness: 200,
   damping: 50,
   restDelta: 0.001,

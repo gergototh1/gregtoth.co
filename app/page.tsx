@@ -1,6 +1,5 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import Link from 'next/link'

@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { useParams, notFound } from 'next/navigation'
+import { useParams } from 'next/navigation'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -23,66 +23,66 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-// MDX components with custom styling
-const components = {
-  h1: (props: any) => (
-    <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-6" {...props} />
-  ),
-  h2: (props: any) => (
-    <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4 mt-8" {...props} />
-  ),
-  h3: (props: any) => (
-    <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3 mt-6" {...props} />
-  ),
-  p: (props: any) => (
-    <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4" {...props} />
-  ),
-  a: (props: any) => (
-    <a
-      className="text-zinc-900 dark:text-zinc-100 underline hover:text-zinc-700 dark:hover:text-zinc-300"
-      {...props}
-    />
-  ),
-  ul: (props: any) => (
-    <ul className="list-disc list-inside text-zinc-600 dark:text-zinc-400 mb-4 space-y-2" {...props} />
-  ),
-  ol: (props: any) => (
-    <ol className="list-decimal list-inside text-zinc-600 dark:text-zinc-400 mb-4 space-y-2" {...props} />
-  ),
-  li: (props: any) => (
-    <li className="leading-relaxed" {...props} />
-  ),
-  code: (props: any) => (
-    <code
-      className="bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-sm font-mono"
-      {...props}
-    />
-  ),
-  pre: (props: any) => (
-    <pre className="bg-zinc-100 dark:bg-zinc-800 p-4 rounded-lg overflow-x-auto mb-6">
-      <code className="text-sm font-mono" {...props} />
-    </pre>
-  ),
-  blockquote: (props: any) => (
-    <blockquote
-      className="border-l-4 border-zinc-300 dark:border-zinc-700 pl-4 italic text-zinc-600 dark:text-zinc-400 mb-4"
-      {...props}
-    />
-  ),
-  strong: (props: any) => (
-    <strong className="font-semibold text-zinc-900 dark:text-zinc-100" {...props} />
-  ),
-}
+// MDX components with custom styling (not used in current implementation)
+// const components = {
+//   h1: (props: React.ComponentProps<'h1'>) => (
+//     <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-6" {...props} />
+//   ),
+//   h2: (props: React.ComponentProps<'h2'>) => (
+//     <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4 mt-8" {...props} />
+//   ),
+//   h3: (props: React.ComponentProps<'h3'>) => (
+//     <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3 mt-6" {...props} />
+//   ),
+//   p: (props: React.ComponentProps<'p'>) => (
+//     <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4" {...props} />
+//   ),
+//   a: (props: React.ComponentProps<'a'>) => (
+//     <a
+//       className="text-zinc-900 dark:text-zinc-100 underline hover:text-zinc-700 dark:hover:text-zinc-300"
+//       {...props}
+//     />
+//   ),
+//   ul: (props: React.ComponentProps<'ul'>) => (
+//     <ul className="list-disc list-inside text-zinc-600 dark:text-zinc-400 mb-4 space-y-2" {...props} />
+//   ),
+//   ol: (props: React.ComponentProps<'ol'>) => (
+//     <ol className="list-decimal list-inside text-zinc-600 dark:text-zinc-400 mb-4 space-y-2" {...props} />
+//   ),
+//   li: (props: React.ComponentProps<'li'>) => (
+//     <li className="leading-relaxed" {...props} />
+//   ),
+//   code: (props: React.ComponentProps<'code'>) => (
+//     <code
+//       className="bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-sm font-mono"
+//       {...props}
+//     />
+//   ),
+//   pre: (props: React.ComponentProps<'pre'>) => (
+//     <pre className="bg-zinc-100 dark:bg-zinc-800 p-4 rounded-lg overflow-x-auto mb-6">
+//       <code className="text-sm font-mono" {...props} />
+//     </pre>
+//   ),
+//   blockquote: (props: React.ComponentProps<'blockquote'>) => (
+//     <blockquote
+//       className="border-l-4 border-zinc-300 dark:border-zinc-700 pl-4 italic text-zinc-600 dark:text-zinc-400 mb-4"
+//       {...props}
+//     />
+//   ),
+//   strong: (props: React.ComponentProps<'strong'>) => (
+//     <strong className="font-semibold text-zinc-900 dark:text-zinc-100" {...props} />
+//   ),
+// }
 
 export default function ArticlePage() {
   const params = useParams()
   const slug = params?.slug as string
-  const [post, setPost] = useState<any>(null)
+  const [post, setPost] = useState<{meta: {title: string; date: string; author: string; tags: string[]}; content: string} | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     // Mock data for now - will implement proper MDX loading later
-    const mockPosts: Record<string, any> = {
+    const mockPosts: Record<string, {meta: {title: string; date: string; author: string; tags: string[]}; content: string}> = {
       'hello': {
         meta: {
           title: 'Hello World - My First Blog Post',

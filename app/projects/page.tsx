@@ -43,7 +43,7 @@ export default function Projects() {
 
         <h1 className="text-2xl font-semibold mb-4">Projects</h1>
         <p className="text-zinc-600 dark:text-zinc-400">
-          A collection of products I've built solo, leveraging AI and modern development practices.
+          A collection of products I&apos;ve built solo, leveraging AI and modern development practices.
         </p>
       </motion.div>
 

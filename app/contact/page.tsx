@@ -78,7 +78,7 @@ export default function Contact() {
 
         <h1 className="text-2xl font-semibold mb-4">Contact</h1>
         <p className="text-zinc-600 dark:text-zinc-400">
-          Let's connect! I'm always interested in discussing new projects, opportunities, or just chatting about development and AI.
+          Let&apos;s connect! I&apos;m always interested in discussing new projects, opportunities, or just chatting about development and AI.
         </p>
       </motion.div>
 

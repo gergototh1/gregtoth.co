@@ -52,7 +52,7 @@ export default function About() {
           <h2 className="text-xl font-medium text-zinc-900 dark:text-zinc-100">Business guy turned vibe coder</h2>
 
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            I've spent 10+ years in business development and marketing, and even ran my own software development company as CEO – without ever being a developer myself.
+            I&apos;ve spent 10+ years in business development and marketing, and even ran my own software development company as CEO – without ever being a developer myself.
           </p>
 
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -68,11 +68,11 @@ export default function About() {
           </p>
 
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            I love exploring the intersection of AI and product creation. For me, it's not just about coding – it's about creating new solutions, faster than ever, and actually bringing them to life.
+            I love exploring the intersection of AI and product creation. For me, it&apos;s not just about coding – it&apos;s about creating new solutions, faster than ever, and actually bringing them to life.
           </p>
 
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Outside of building, you'll probably catch me geeking out on the latest AI breakthroughs, startup trends, or sketching out the next "crazy but doable" product idea.
+            Outside of building, you&apos;ll probably catch me geeking out on the latest AI breakthroughs, startup trends, or sketching out the next &quot;crazy but doable&quot; product idea.
           </p>
         </div>
       </motion.section>
