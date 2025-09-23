@@ -119,3 +119,15 @@ Want to try vibe coding? Start small:
 As AI tools become more powerful, the ability to quickly translate ideas into working software will become the ultimate competitive advantage. The developers who embrace this shift will build the products that matter.
 
 Vibe coding isn't just a development methodology - it's a way of thinking that prioritizes user value over technical purity. And in my experience, that's exactly what the world needs more of.
+
+Performance impact:
+  - ✅ Gyorsabb: Static oldalak (főoldal, about, stb.)
+  - ⚠️ Lassabb: Article details (client rendering +
+  hydration)
+
+  Javítási javaslat:
+  Ha jobb SEO-t és performance-ot akarsz az article
+  oldalakhoz, át lehetne alakítani server-side
+  rendering-re, de akkor el kellene távolítani a
+  Framer Motion animációkat vagy lazy loading-gal
+  betölteni őket.

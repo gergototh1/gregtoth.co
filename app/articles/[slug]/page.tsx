@@ -1,8 +1,7 @@
-'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { useParams } from 'next/navigation'
+import { notFound } from 'next/navigation'
+import { getPostBySlug, getAllPosts } from '@/lib/mdx'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -74,57 +73,24 @@ const TRANSITION_SECTION = {
 //   ),
 // }
 
-export default function ArticlePage() {
-  const params = useParams()
-  const slug = params?.slug as string
-  const [post, setPost] = useState<{meta: {title: string; date: string; author: string; tags: string[]}; content: string} | null>(null)
-  const [loading, setLoading] = useState(true)
+// Helper functions for navigation
+const getPreviousPost = (currentSlug: string) => {
+  const posts = getAllPosts()
+  const currentIndex = posts.findIndex(post => post.slug === currentSlug)
+  return currentIndex > 0 ? posts[currentIndex - 1] : null
+}
 
-  useEffect(() => {
-    // Mock data for now - will implement proper MDX loading later
-    const mockPosts: Record<string, {meta: {title: string; date: string; author: string; tags: string[]}; content: string}> = {
-      'hello': {
-        meta: {
-          title: 'Hello World - My First Blog Post',
-          date: '2025-01-13',
-          author: 'Greg Toth',
-          tags: ['blog', 'introduction', 'mdx']
-        },
-        content: 'Welcome to my blog! This is where I\'ll share thoughts on development, AI, and building products solo.'
-      },
-      'from-business-to-dev': {
-        meta: {
-          title: 'From Business Guy to Solo Developer',
-          date: '2025-01-12',
-          author: 'Greg Toth',
-          tags: ['career', 'development', 'AI', 'solo']
-        },
-        content: 'My journey from business development to solo development using AI tools and modern practices.'
-      },
-      'vibe-coding': {
-        meta: {
-          title: 'The Power of Vibe Coding',
-          date: '2025-01-11',
-          author: 'Greg Toth',
-          tags: ['AI', 'development', 'philosophy', 'productivity']
-        },
-        content: 'How AI-assisted development changed my approach to building products and why intuition matters more than perfection.'
-      }
-    }
+const getNextPost = (currentSlug: string) => {
+  const posts = getAllPosts()
+  const currentIndex = posts.findIndex(post => post.slug === currentSlug)
+  return currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null
+}
 
-    const foundPost = mockPosts[slug]
-    if (foundPost) {
-      setPost(foundPost)
-    }
-    setLoading(false)
-  }, [slug])
-
-  if (loading) {
-    return <div className="text-zinc-600 dark:text-zinc-400">Loading...</div>
-  }
+export default function ArticlePage({ params }: { params: { slug: string } }) {
+  const post = getPostBySlug(params.slug)
 
   if (!post) {
-    return <div className="text-zinc-600 dark:text-zinc-400">Article not found.</div>
+    notFound()
   }
 
   return (
@@ -147,23 +113,23 @@ export default function ArticlePage() {
 
         <div className="space-y-4">
           <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
-            {post.meta.title}
+            {post.title}
           </h1>
 
           <div className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-500">
             <time>
-              {new Date(post.meta.date).toLocaleDateString('en-US', {
+              {new Date(post.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
               })}
             </time>
-            <span>by {post.meta.author}</span>
+            <span>by {post.author}</span>
           </div>
 
-          {post.meta.tags.length > 0 && (
+          {post.tags.length > 0 && (
             <div className="flex gap-2">
-              {post.meta.tags.map((tag) => (
+              {post.tags.map((tag) => (
                 <span
                   key={tag}
                   className="inline-flex items-center rounded-full bg-zinc-100 dark:bg-zinc-800 px-3 py-1 text-sm font-medium text-zinc-600 dark:text-zinc-400"
@@ -179,17 +145,81 @@ export default function ArticlePage() {
       <motion.article
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
-        className="prose prose-zinc dark:prose-invert max-w-none"
+        className="space-y-6"
       >
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          {post.content}
-        </p>
-        <div className="mt-8 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            💡 <strong>Note:</strong> This is a simplified version. Full MDX rendering will be implemented in the next iteration.
-          </p>
-        </div>
+        <div
+          className="space-y-6 text-zinc-600 dark:text-zinc-400 leading-relaxed"
+          dangerouslySetInnerHTML={{
+            __html: post.content
+              .replace(/\n\n/g, '</p><p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">')
+              .replace(/^/, '<p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">')
+              .replace(/$/, '</p>')
+              .replace(/## (.*?)<\/p>/g, '<h2 class="text-xl font-medium text-zinc-900 dark:text-zinc-100 mt-8 mb-4">$1</h2>')
+              .replace(/### (.*?)<\/p>/g, '<h3 class="text-lg font-medium text-zinc-900 dark:text-zinc-100 mt-6 mb-3">$1</h3>')
+              .replace(/- (.*?)<\/p>/g, '<li class="text-zinc-600 dark:text-zinc-400 leading-relaxed">$1</li>')
+              .replace(/(<li.*?<\/li>)/g, '<ul class="list-disc list-inside space-y-2 my-4">$1</ul>')
+              .replace(/\*\*(.*?)\*\*/g, '<strong class="font-medium text-zinc-900 dark:text-zinc-100">$1</strong>')
+              .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+              .replace(/<p[^>]*><h/g, '<h')
+              .replace(/<\/h([1-6])><\/p>/g, '</h$1>')
+              .replace(/<p[^>]*><ul>/g, '<ul>')
+              .replace(/<\/ul><\/p>/g, '</ul>')
+              .replace(/<p[^>]*><\/p>/g, '')
+          }}
+        />
       </motion.article>
+
+      <motion.nav
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+        className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800"
+      >
+        <div className="flex justify-between items-center">
+          {getPreviousPost(params.slug) ? (
+            <Link
+              href={`/articles/${getPreviousPost(params.slug)?.slug}`}
+              className="group flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            >
+              <svg
+                className="w-4 h-4 transition-transform group-hover:-translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <div className="text-left">
+                <div className="text-xs text-zinc-500 dark:text-zinc-500">Previous</div>
+                <div className="font-medium">{getPreviousPost(params.slug)?.title}</div>
+              </div>
+            </Link>
+          ) : (
+            <div />
+          )}
+
+          {getNextPost(params.slug) ? (
+            <Link
+              href={`/articles/${getNextPost(params.slug)?.slug}`}
+              className="group flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors text-right"
+            >
+              <div className="text-right">
+                <div className="text-xs text-zinc-500 dark:text-zinc-500">Next</div>
+                <div className="font-medium">{getNextPost(params.slug)?.title}</div>
+              </div>
+              <svg
+                className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          ) : (
+            <div />
+          )}
+        </div>
+      </motion.nav>
     </motion.main>
   )
 }

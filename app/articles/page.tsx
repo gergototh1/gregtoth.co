@@ -1,8 +1,7 @@
-'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 import { AnimatedBackground } from '@/components/ui/animated-background'
+import { getAllPosts } from '@/lib/mdx'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -24,40 +23,7 @@ const TRANSITION_SECTION = {
 }
 
 export default function Articles() {
-  const [posts, setPosts] = useState<{slug: string; title: string; date: string; excerpt: string}[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    // For now, use static data until we set up API route
-    const staticPosts = [
-      {
-        slug: 'hello',
-        title: 'Hello World - My First Blog Post',
-        date: '2025-01-13',
-        excerpt: 'Welcome to my new blog! This is my first post using MDX.',
-        author: 'Greg Toth',
-        tags: ['blog', 'introduction', 'mdx']
-      },
-      {
-        slug: 'from-business-to-dev',
-        title: 'From Business Guy to Solo Developer',
-        date: '2025-01-12',
-        excerpt: 'My journey transitioning from business roles to full-stack development using AI and modern tools.',
-        author: 'Greg Toth',
-        tags: ['career', 'development', 'AI', 'solo']
-      },
-      {
-        slug: 'vibe-coding',
-        title: 'The Power of Vibe Coding',
-        date: '2025-01-11',
-        excerpt: 'How AI-assisted development changed my approach to building products and why intuition matters more than perfection.',
-        author: 'Greg Toth',
-        tags: ['AI', 'development', 'philosophy', 'productivity']
-      }
-    ]
-    setPosts(staticPosts)
-    setLoading(false)
-  }, [])
+  const posts = getAllPosts()
   return (
     <motion.main
       className="space-y-8"
@@ -84,9 +50,7 @@ export default function Articles() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex flex-col space-y-0">
-          {loading ? (
-            <p className="text-zinc-600 dark:text-zinc-400">Loading articles...</p>
-          ) : posts.length === 0 ? (
+          {posts.length === 0 ? (
             <p className="text-zinc-600 dark:text-zinc-400">No articles yet. Check back soon!</p>
           ) : (
             <AnimatedBackground

@@ -61,26 +61,17 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
   },
 ]
 
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    title: 'From Business Guy to Solo Developer',
-    description: 'My journey transitioning from business roles to full-stack development',
-    link: '/articles/from-business-to-dev',
-    uid: 'blog-1',
-  },
-  {
-    title: 'The Power of Vibe Coding',
-    description: 'How AI-assisted development changed my approach to building products',
-    link: '/articles/vibe-coding',
-    uid: 'blog-2',
-  },
-  {
-    title: 'Building Solo: Tools and Techniques',
-    description: 'Essential tools and workflows for solo developers and indie hackers',
-    link: '/articles/building-solo',
-    uid: 'blog-3',
-  },
-]
+import { getAllPosts } from '@/lib/mdx'
+
+export function getBlogPosts(): BlogPost[] {
+  const posts = getAllPosts()
+  return posts.map(post => ({
+    title: post.title,
+    description: post.excerpt,
+    link: `/articles/${post.slug}`,
+    uid: post.slug,
+  }))
+}
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {

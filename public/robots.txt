@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Important pages
+Allow: /about
+Allow: /projects
+Allow: /articles
+Allow: /contact
+
+# Sitemap
+Sitemap: https://gregtoth.me/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
