@@ -294,7 +294,7 @@ export default function ArticlePage() {
           </Link>
           <h1 className="text-2xl font-semibold mb-4">Article Not Found</h1>
           <p className="text-zinc-600 dark:text-zinc-400">
-            The article you're looking for doesn't exist.
+            The article you&apos;re looking for doesn&apos;t exist.
           </p>
         </div>
       </div>
