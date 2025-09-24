@@ -1,7 +1,7 @@
+'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
-import { getAllPosts } from '@/lib/mdx'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -23,7 +23,36 @@ const TRANSITION_SECTION = {
 }
 
 export default function Articles() {
-  const posts = getAllPosts()
+  // Use static data for client component to avoid fs module issues
+  const posts = [
+    {
+      slug: 'hello',
+      title: 'Hello World - My First Blog Post',
+      date: '2025-01-13',
+      excerpt: 'Welcome to my new blog! This is my first post using MDX.',
+      author: 'Greg Toth',
+      tags: ['blog', 'introduction', 'mdx'],
+      content: ''
+    },
+    {
+      slug: 'from-business-to-dev',
+      title: 'From Business Guy to Solo Developer',
+      date: '2025-01-12',
+      excerpt: 'My journey transitioning from business roles to full-stack development using AI and modern tools.',
+      author: 'Greg Toth',
+      tags: ['career', 'development', 'AI', 'solo'],
+      content: ''
+    },
+    {
+      slug: 'vibe-coding',
+      title: 'The Power of Vibe Coding',
+      date: '2025-01-11',
+      excerpt: 'How AI-assisted development changed my approach to building products and why intuition matters more than perfection.',
+      author: 'Greg Toth',
+      tags: ['AI', 'development', 'philosophy', 'productivity'],
+      content: ''
+    }
+  ]
   return (
     <motion.main
       className="space-y-8"
