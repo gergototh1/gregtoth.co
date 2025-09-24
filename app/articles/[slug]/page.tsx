@@ -1,7 +1,7 @@
+'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import { getPostBySlug, getAllPosts } from '@/lib/mdx'
+import { useParams, useRouter } from 'next/navigation'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -73,25 +73,232 @@ const TRANSITION_SECTION = {
 //   ),
 // }
 
+// Static blog post data (matches data.ts)
+const posts = [
+  {
+    slug: 'hello',
+    title: 'Hello World - My First Blog Post',
+    date: '2025-01-13',
+    excerpt: 'Welcome to my new blog! This is my first post using MDX.',
+    author: 'Greg Toth',
+    tags: ['blog', 'introduction', 'mdx'],
+    content: `# Welcome to My Blog!
+
+This is my first blog post using **MDX**. With MDX, I can write regular Markdown and also include React components directly in my content.
+
+## What is MDX?
+
+MDX is a format that lets you write JSX in your Markdown documents. This means you can:
+
+- Write normal Markdown content
+- Include React components
+- Create interactive content
+
+## Example Code
+
+Here's a simple JavaScript function:
+
+\`\`\`javascript
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+
+console.log(greet("World"));
+\`\`\`
+
+## What's Next?
+
+I'll be writing more posts about:
+
+1. **Web Development** - Tips and tricks
+2. **React** - Best practices
+3. **Next.js** - Advanced techniques
+4. **TypeScript** - Type safety`
+  },
+  {
+    slug: 'from-business-to-dev',
+    title: 'From Business Guy to Solo Developer',
+    date: '2025-01-12',
+    excerpt: 'My journey transitioning from business roles to full-stack development using AI and modern tools.',
+    author: 'Greg Toth',
+    tags: ['career', 'development', 'AI', 'solo'],
+    content: `# From Business Guy to Solo Developer
+
+After spending 10+ years in business development and marketing roles at various startups, I made the leap to becoming a solo developer. This transition wasn't traditional, and it wouldn't have been possible without modern AI tools.
+
+## The Business Background
+
+My career started in the business side of tech companies. I worked in:
+
+- **Business Development** - Building partnerships and revenue streams
+- **Marketing** - Digital marketing campaigns and growth strategies
+- **Product Strategy** - Working with engineering teams on product direction
+- **Sales** - Enterprise and SMB customer acquisition
+
+## The Turning Point
+
+In 2023, I realized that the traditional model of building teams and raising funding wasn't the only path anymore. AI tools like:
+
+- **Claude** for code generation and architecture decisions
+- **GitHub Copilot** for faster development
+- **ChatGPT** for debugging and learning
+- **V0** for rapid UI prototyping
+
+These tools democratized software development in a way that allowed someone with business experience to become technically proficient quickly.
+
+## The Solo Developer Philosophy
+
+Being a solo developer means:
+
+1. **Full Ownership** - Every decision, from technical architecture to business strategy
+2. **Rapid Iteration** - No meetings, no approval processes, just build and ship
+3. **AI-First Approach** - Leveraging AI for tasks that would traditionally require a team
+4. **Business-Minded Development** - Building features that actually matter to users
+
+## Current Projects
+
+I'm now working on several projects:
+
+- **CryptoVideoReport.com** - AI-powered crypto market analysis
+- **Inbox2Invoice.com** - Automated invoice processing
+- **This Blog** - Sharing the journey and lessons learned
+
+## Lessons Learned
+
+The biggest lesson? You don't need to be the best developer to build successful products. You need to:
+
+- Understand your users
+- Ship quickly and iterate
+- Use the right tools for the job
+- Focus on solving real problems
+
+The combination of business experience and AI-assisted development is incredibly powerful for solo entrepreneurs.`
+  },
+  {
+    slug: 'vibe-coding',
+    title: 'The Power of Vibe Coding',
+    date: '2025-01-11',
+    excerpt: 'How AI-assisted development changed my approach to building products and why intuition matters more than perfection.',
+    author: 'Greg Toth',
+    tags: ['AI', 'development', 'philosophy', 'productivity'],
+    content: `# The Power of Vibe Coding
+
+Traditional software development follows strict methodologies: detailed requirements, architectural planning, extensive testing, code reviews. But what if there's a different way? What if you could build by feel, by intuition, by *vibe*?
+
+## What is Vibe Coding?
+
+Vibe coding is my term for a development approach that prioritizes:
+
+- **Intuitive Problem Solving** - Trust your instincts about what users need
+- **Rapid Prototyping** - Build first, optimize later
+- **AI-Assisted Flow** - Let AI handle the boilerplate while you focus on the creative parts
+- **Imperfect Progress** - Ship working solutions over perfect code
+
+## The Traditional Way vs The Vibe Way
+
+### Traditional Development:
+1. Write detailed specifications
+2. Create comprehensive tests
+3. Build with extensive error handling
+4. Code review and refactor
+5. Document everything
+6. Deploy with monitoring
+
+### Vibe Development:
+1. Have an idea
+2. Ask AI to help build it
+3. Iterate based on feel
+4. Ship when it works
+5. Fix issues as they come up
+6. Move to the next idea
+
+## Why Vibe Coding Works for Solo Developers
+
+When you're building alone, you don't have the luxury of formal processes. You need to move fast and trust your judgment. AI tools make this possible by:
+
+- **Handling the Routine** - AI writes boilerplate, handles imports, suggests patterns
+- **Reducing Cognitive Load** - Less mental energy spent on syntax, more on solving problems
+- **Enabling Experimentation** - Try ideas quickly without the overhead
+
+## Examples from My Projects
+
+### CryptoVideoReport.com
+- **The Vibe**: "People want crypto news in video format"
+- **The Build**: Used AI to help create video generation pipeline
+- **The Result**: Working product in 3 weeks, not 3 months
+
+### Inbox2Invoice.com
+- **The Vibe**: "Email invoice processing should be automatic"
+- **The Build**: AI helped with PDF parsing and email integration
+- **The Result**: MVP that actually processes real invoices
+
+## The Downsides
+
+Vibe coding isn't perfect:
+
+- **Technical Debt** - You accumulate shortcuts
+- **Scalability Issues** - Quick solutions don't always scale
+- **Documentation Gaps** - Hard to onboard others later
+- **Quality Concerns** - Less rigorous testing
+
+## When to Use Vibe Coding
+
+Vibe coding works best when:
+
+- You're building MVPs or prototypes
+- You're a solo developer or small team
+- Time to market is critical
+- You have AI tools to assist
+- You can afford to refactor later
+
+## The Future of Development
+
+I believe we're entering an era where the ability to build quickly and intuitively matters more than following perfect processes. AI tools are making it possible for anyone with good product instincts to create software.
+
+The developers who thrive will be those who can:
+1. Identify what users actually want
+2. Use AI to build solutions quickly
+3. Iterate based on real feedback
+4. Scale when it's time to scale
+
+Vibe coding is just the beginning. The future belongs to builders who can think in product and execute in code, even if that code isn't perfect.`
+  }
+]
+
 // Helper functions for navigation
 const getPreviousPost = (currentSlug: string) => {
-  const posts = getAllPosts()
   const currentIndex = posts.findIndex(post => post.slug === currentSlug)
   return currentIndex > 0 ? posts[currentIndex - 1] : null
 }
 
 const getNextPost = (currentSlug: string) => {
-  const posts = getAllPosts()
   const currentIndex = posts.findIndex(post => post.slug === currentSlug)
   return currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
-  const post = getPostBySlug(slug)
+export default function ArticlePage() {
+  const params = useParams()
+  const router = useRouter()
+  const slug = params.slug as string
+  const post = posts.find(p => p.slug === slug)
 
   if (!post) {
-    notFound()
+    return (
+      <div className="space-y-8">
+        <div>
+          <Link
+            href="/articles"
+            className="inline-flex items-center text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 mb-8"
+          >
+            ← Back to articles
+          </Link>
+          <h1 className="text-2xl font-semibold mb-4">Article Not Found</h1>
+          <p className="text-zinc-600 dark:text-zinc-400">
+            The article you're looking for doesn't exist.
+          </p>
+        </div>
+      </div>
+    )
   }
 
   return (
